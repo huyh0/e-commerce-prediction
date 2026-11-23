@@ -21,10 +21,19 @@ def load_training_set(df: pd.DataFrame):
 
     X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, train_size = 0.5, test_size=0.5, random_state=42, stratify=y_temp)
 
+    for name, labels in [("train", y_train), ("val", y_val), ("test", y_test)]:
+        print(f"{name}: {len(labels):,} rows, {labels.mean():.2%} purchased")
+
+    categorical_columns = [
+    "Month",
+    "OperatingSystems",
+    "Browser",
+    "Region",
+    "TrafficType",
+    "VisitorType",
+    ]
 
     return X_train, X_val, X_test, y_train, y_val, y_test
-
-
 
 
 if __name__ == "__main__":
@@ -33,5 +42,5 @@ if __name__ == "__main__":
 
     X_train, X_val, X_test, y_train, y_val, y_test = load_training_set(dataframe)
 
-    print(X_train, X_val, X_test, y_train, y_val, y_test)
+
 
