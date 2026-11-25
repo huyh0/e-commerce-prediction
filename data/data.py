@@ -1,6 +1,11 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+categorical_columns = [
+    "Month", "OperatingSystems", "Browser",
+    "Region", "TrafficType", "VisitorType",
+    ]
+
 
 def load_csv(csv_path):
     data = pd.read_csv(f"{csv_path}")
@@ -23,15 +28,6 @@ def load_training_set(df: pd.DataFrame):
 
     for name, labels in [("train", y_train), ("val", y_val), ("test", y_test)]:
         print(f"{name}: {len(labels):,} rows, {labels.mean():.2%} purchased")
-
-    categorical_columns = [
-    "Month",
-    "OperatingSystems",
-    "Browser",
-    "Region",
-    "TrafficType",
-    "VisitorType",
-    ]
 
     return X_train, X_val, X_test, y_train, y_val, y_test
 
