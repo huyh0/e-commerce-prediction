@@ -1,3 +1,4 @@
 artifacts/
-mlruns\
+data/__pycache__
+mlruns/
 mlflow.db
